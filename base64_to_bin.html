@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; UTF-8">
+<meta charset="UTF-8">
+<title>Base64 To Hex|Dec|Bin Decoder</title>
+<style type="text/css">
+	.inputblock {
+	display: inline-block;
+	}
+	.ruleSymb {
+	width: 2em;
+	text-align: center;
+	}
+	.replRule {
+	margin-right: 2em
+	}
+	.header {
+	font-size: 1.6em;
+	}
+	a:link {
+	color: #000000;
+	}
+	a:visited {
+	color: #000000;
+	}
+</style>
+<script type="text/javascript">
+	var idxDef = 0, idxRepl = 1;
+	var urlDecodeRules = [];
+
+	String.prototype.greplace = function(srcChars, destChars) {
+		var srcCharFix = srcChars.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1');
+		var srcSrch = new RegExp(srcCharFix, 'g');
+		return this.replace(srcSrch, destChars);
+	}
+
+	function base64_decode( encodedStr ) {
+		for ( var i in urlDecodeRules ) {
+			encodedStr = encodedStr.greplace( urlDecodeRules[i][idxRepl], urlDecodeRules[i][idxDef] );
+		}
+		var decodedStr = atob(encodedStr);
+		return decodedStr;
+	}
+	
+	window.onload = function() {
+		var srcText = document.querySelector("#srctxt");
+		var hexText = document.querySelector("#hextxt");
+		var decText = document.querySelector("#dectxt");
+		var binText = document.querySelector("#bintxt");
+		var convInfo = document.querySelector("#convInfo");
+		var actionButton = document.querySelector("#convbutton");
+		
+		var ruleSymb = [];
+		var symbSuffix = [ "A", "B", "C" ];
+		for ( var i in symbSuffix ) {
+			ruleSymb[i] = [];
+			ruleSymb[i][idxDef] =  document.querySelector("#def"+symbSuffix[i]);
+			ruleSymb[i][idxRepl] = document.querySelector("#repl"+symbSuffix[i]);
+		}
+		
+		actionButton.onclick = function( event ) {
+			for ( var i in ruleSymb ) {
+				urlDecodeRules[i] = [ ruleSymb[i][idxDef].value, ruleSymb[i][idxRepl].value ];
+			}
+			var srcStr = "", hexStr = "", decStr = "", binStr = "", byteToAdd;
+			try {
+				srcStr = base64_decode( srcText.value );
+			} catch( err ) {
+				if ( err instanceof Error ) console.log( err.message );
+				srcStr = "";
+			}
+			for ( var i=0; i<srcStr.length; i++ ) {
+				if ( i%6 == 0 ) { 
+					var rown = ("000"+Math.floor(i/6)).slice(-4)+": "; 
+					hexStr += rown; decStr += rown; binStr += rown; 
+				}
+				byteToAdd = srcStr.charCodeAt(i).toString(16);
+				hexStr += " " + ("0" + byteToAdd).slice(-2) + " ";
+				byteToAdd = srcStr.charCodeAt(i).toString();
+				decStr += " " + ("00" + byteToAdd).slice(-3) + " ";
+				byteToAdd = srcStr.charCodeAt(i).toString(2);
+				binStr += " " + ("0000000" + byteToAdd).slice(-8) + " ";
+				if ( (i+1) % 6 == 0 ) {  hexStr += "\n"; decStr += "\n"; binStr += "\n"; }
+			}
+			hexText.value = hexStr;
+			decText.value = decStr;
+			binText.value = binStr;
+			convInfo.textContent = "Base64 Size: " + Math.ceil(srcStr.length * 4 / 3) + "B; " 
+									+ "Binary Size: " + srcStr.length + "B";
+			
+			event.preventDefault();
+			return false;
+		}
+	}
+</script>
+</head>
+<body>
+<table>
+	<tr>
+		<td>
+			<div class="header">Converting Base64 to Binary | Hexadecimal, Decimal, Binary Representation</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div>
+				<div class="inputblock">
+					<div><label for="srctxt">BASE64:</label></div>
+					<div><textarea id="srctxt" cols="8" rows="20" spellcheck="false"></textarea></div>
+				</div>
+				<div class="inputblock">
+					<div><label for="hextxt">BINARY /HEX:</label></div>
+					<div><textarea id="hextxt" cols="30" rows="20" spellcheck="false"></textarea></div>
+				</div>
+				<div class="inputblock">
+					<div><label for="dectxt">BINARY /DEC:</label></div>
+					<div><textarea id="dectxt" cols="36" rows="20" spellcheck="false"></textarea></div>
+				</div>
+				<div class="inputblock">
+					<div><label for="bintxt">BINARY /BIN:</label></div>
+					<div><textarea id="bintxt" cols="66" rows="20" spellcheck="false"></textarea></div>
+				</div>
+			</div>
+			<div>
+				<span id="convInfo"></span> 
+			</div>
+			<div>
+				<input type="submit" value="convert" id="convbutton">
+			</div>
+			<br />
+			<div>
+				<div>URL-Conflicting Symbols Replacement:</div>
+				<div>
+					<span class="replRule">
+						<input type="text" class="ruleSymb" id="defA" value="+">
+						<span class="replGap"> => </span>
+						<input type="text" class="ruleSymb" id="replA" value="+">
+					</span>
+					<span class="replRule">
+						<input type="text" class="ruleSymb" id="defB" value="/">
+						<span class="replGap"> => </span>
+						<input type="text" class="ruleSymb" id="replB" value="/">
+					</span>
+					<span class="replRule">
+						<input type="text" class="ruleSymb" id="defC" value="=">
+						<span class="replGap"> => </span>
+						<input type="text" class="ruleSymb" id="replC" value="=">
+					</span>
+				<div>
+			</div>
+			<div style="margin: 1em 0em;">
+				<a href="base64_to_bin.html" download>Download application</a>
+			</div>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

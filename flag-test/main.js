@@ -82,42 +82,46 @@ function nextTask(buttonNum) {
 		taskAnswers[buttonNum][i].checked = false;
 		taskAnswers[buttonNum][i]["hidden"] = false;
 	}
-	
 	var i=0;
 	var rightAnswerDBIdx;
 	do {
 		rightAnswerDBIdx = Math.floor(db.length*Math.random());
 	} while ( prevRightAnswers.indexOf(rightAnswerDBIdx) > -1 + eps || ++i < 64 );
-	
-	var alters = [ rightAnswerDBIdx ];
-	if ( db[rightAnswerDBIdx].hasOwnProperty("challenge") && db[rightAnswerDBIdx].challenge.length>0 ) {
-		var challengeNum = db[rightAnswerDBIdx].challenge.length;
-		var rshIdx = getReshuffledIdx(challengeNum);
-		for ( var i=0; i<challengeNum && alters.length<altLim; i++ ) {
-			var challengeDBIdx = GetDBIndex( db[rightAnswerDBIdx].challenge[rshIdx[i]] );
-			if ( challengeDBIdx < 0 ) continue;
-			if ( Math.random() < Math.pow(challengePsb, alters.length) )
-				alters.push(challengeDBIdx);
-		}
-	}
-	i=0;
-	while ( alters.length < altLim && ++i<2048 ) {
-		var currAlter = Math.floor(db.length*Math.random());
-		if ( alters.indexOf(currAlter) < 0 ) alters.push(currAlter);
-	}
-	var rshIdx = getReshuffledIdx(alters.length);
-	rightAnswer[buttonNum] = rshIdx.indexOf(0);
-	questionImages[buttonNum].src = "flags/"+db[alters[0]].mainname+".png";
-	for ( var i in alterLabels[buttonNum] ) {
-		if ( !(alterLabels[buttonNum][i] instanceof Element) || rshIdx.length <= i + eps ) continue;
-		alterLabels[buttonNum][i].textContent = db[alters[rshIdx[i]]].mainname.replace(/_/g, " ");
-	}
-	if ( prevRightAnswers.length >= prevRightAnswersLim - eps )
-		prevRightAnswers.shift();
-	prevRightAnswers.push(alters[0]);
-	
 	nextButtons[buttonNum]["hidden"] = true;
-	applyButtons[buttonNum]["hidden"] = false;
+	questionImages[buttonNum].src = "flags/"+db[rightAnswerDBIdx].mainname+".png";
+	questionImages[buttonNum].onload = (function(_rightAnswerDBIdx, _buttonNum) {
+		var rightAnswerDBIdx = _rightAnswerDBIdx;
+		var buttonNum = _buttonNum;
+		return function() {
+			var alters = [ rightAnswerDBIdx ];
+			if ( db[rightAnswerDBIdx].hasOwnProperty("challenge") && db[rightAnswerDBIdx].challenge.length>0 ) {
+				var challengeNum = db[rightAnswerDBIdx].challenge.length;
+				var rshIdx = getReshuffledIdx(challengeNum);
+				for ( var i=0; i<challengeNum && alters.length<altLim; i++ ) {
+					var challengeDBIdx = GetDBIndex( db[rightAnswerDBIdx].challenge[rshIdx[i]] );
+					if ( challengeDBIdx < 0 ) continue;
+					if ( Math.random() < Math.pow(challengePsb, alters.length) )
+						alters.push(challengeDBIdx);
+				}
+			}
+			i=0;
+			while ( alters.length < altLim && ++i<2048 ) {
+				var currAlter = Math.floor(db.length*Math.random());
+				if ( alters.indexOf(currAlter) < 0 ) alters.push(currAlter);
+			}
+			var rshIdx = getReshuffledIdx(alters.length);
+			rightAnswer[buttonNum] = rshIdx.indexOf(0);
+			
+			for ( var i in alterLabels[buttonNum] ) {
+				if ( !(alterLabels[buttonNum][i] instanceof Element) || rshIdx.length <= i + eps ) continue;
+				alterLabels[buttonNum][i].textContent = db[alters[rshIdx[i]]].mainname.replace(/_/g, " ");
+			}
+			if ( prevRightAnswers.length >= prevRightAnswersLim - eps )
+				prevRightAnswers.shift();
+			prevRightAnswers.push(alters[0]);
+			applyButtons[buttonNum]["hidden"] = false;
+		};
+	})(rightAnswerDBIdx, buttonNum);
 }
 
 window.onload = function() {

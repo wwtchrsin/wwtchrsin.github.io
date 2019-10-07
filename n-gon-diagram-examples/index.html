@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>nGonDiagram :: Examples</title>
+<!--
+<script type="text/javascript" src=""></script>
+<link rel="stylesheet" type="text/css" href="" media="all">
+-->
+<style type="text/css">
+body {
+background-color: #dddddd;
+}
+#header {
+margin: 15px 10% 10px 10%;
+}
+#footer {
+margin: 10px 10% 80px 10%;
+}
+#header, #footer {
+float: left;
+width: calc(80% - 16px);
+font-size: 5vw;
+color: #444444;
+text-align: center;
+}
+#main_part {
+float: left;
+width: 80%;
+margin: 10px 10% 10px 10%;
+}
+.card {
+float: left;
+width: calc(33% - 16px);
+margin-right: 16px;
+margin-bottom: 35px;
+}
+img.diag {
+display: block;
+max-width: 100%;
+min-width: 100%;
+margin-bottom: 8px;
+}
+.img_container {
+width: 100%;
+min-height: 200px;
+}
+textarea {
+background-color: transparent;
+border-width: 0;
+}
+.textarea-container {
+margin-bottom: 4px;
+}
+button[type="submit"] {
+display: block;
+width: 100%;
+border: 2px solid #222222;
+border-radius: 6px;
+background-color: transparent;
+padding: 4px 30px;
+font-size: 18px;
+}
+@media (min-width: 1050px) and (max-width: 1390px) {
+    .card {
+    width: calc(49% - 16px);
+    }
+    #header, #main_part, #footer {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    }
+}
+@media (min-width: 701px) and (max-width: 1050px) {
+    .card {
+    width: 100%;
+    }
+    #header, #main_part, #footer {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    }
+}
+@media (max-width: 700px) {
+    .card {
+    width: 100%;
+    }
+    #header, #main_part, #footer {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    }
+}
+</style>
+</head>
+<body>
+    <div id="header">
+        nGonDiagram/Examples
+    </div>
+    <div id="main_part">
+    <form method="POST" action="index.php">
+    <div class="card-line">            <div class="card">
+                <div class="card-inner">
+                    <div class="img_container">
+                        <img src="./diags/diag_0.png" class="diag" />
+                    </div>
+                                        <div>
+                        <code><span style="color: #000000">
+<span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'A'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'B'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'C'</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'D'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'E'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'F'&nbsp;<br /></span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$diag&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">nGonDiagram</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">6&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$diag</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">AddData</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">);</span>
+</span>
+</code>                    </div>
+                </div>
+            </div>
+                <div class="card">
+                <div class="card-inner">
+                    <div class="img_container">
+                        <img src="./diags/diag_1.png" class="diag" />
+                    </div>
+                                        <div>
+                        <code><span style="color: #000000">
+<span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'width'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">768</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'height'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">640</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'radius'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">200</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'graduations'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,<br />);<br /></span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #DD0000">'A'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'B'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'C'&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$diag&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">nGonDiagram</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$diag</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">AddData</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">);</span>
+</span>
+</code>                    </div>
+                </div>
+            </div>
+                <div class="card">
+                <div class="card-inner">
+                    <div class="img_container">
+                        <img src="./diags/diag_2.png" class="diag" />
+                    </div>
+                                        <div>
+                        <code><span style="color: #000000">
+<span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'width'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">768</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'height'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">640</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'radius'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">200</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'internal-scale'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">0.5</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'anti-aliasing'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'graduations'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'centering'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,<br />);<br /></span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #DD0000">'A'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'B'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'C'&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$diag&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">nGonDiagram</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$diag</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">AddData</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">);</span>
+</span>
+</code>                    </div>
+                </div>
+            </div>
+    </div><div class="card-line">            <div class="card">
+                <div class="card-inner">
+                    <div class="img_container">
+                        <img src="./diags/diag_3.png" class="diag" />
+                    </div>
+                                        <div>
+                        <code><span style="color: #000000">
+<span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'caption-font-size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">28</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'caption-line-margin'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'caption-margin'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">24</span><span style="color: #007700">,<br />);<br /></span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #DD0000">"axis\na"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"axis\nb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"axis\nc"</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">"axis\nd"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"axis\ne"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"axis\nf"</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">"axis\ng"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"axis\nh"</span><span style="color: #007700">,<br />);<br /></span><span style="color: #0000BB">$diag&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">nGonDiagram</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$diag</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">AddData</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">);</span>
+</span>
+</code>                    </div>
+                </div>
+            </div>
+                <div class="card">
+                <div class="card-inner">
+                    <div class="img_container">
+                        <img src="./diags/diag_4.png" class="diag" />
+                    </div>
+                                        <div>
+                        <code><span style="color: #000000">
+<span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'caption-font-size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">28</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'caption-line-margin'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'caption-margin'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">24</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'first-vertex'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,<br />);<br /></span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #DD0000">"axis\na"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"axis\nb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"axis\nc"</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">"axis\nd"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"axis\ne"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"axis\nf"</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">"axis\ng"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"axis\nh"</span><span style="color: #007700">,<br />);<br /></span><span style="color: #0000BB">$diag&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">nGonDiagram</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$diag</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">AddData</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">);</span>
+</span>
+</code>                    </div>
+                </div>
+            </div>
+                <div class="card">
+                <div class="card-inner">
+                    <div class="img_container">
+                        <img src="./diags/diag_5.png" class="diag" />
+                    </div>
+                                        <div>
+                        <code><span style="color: #000000">
+<span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'caption-font-size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">28</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'caption-line-margin'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'caption-margin'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">24</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'first-vertex'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'rotation'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">15</span><span style="color: #007700">,<br />);<br /></span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #DD0000">"axis\na"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"axis\nb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"axis\nc"</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">"axis\nd"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"axis\ne"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"axis\nf"</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">"axis\ng"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"axis\nh"</span><span style="color: #007700">,<br />);<br /></span><span style="color: #0000BB">$diag&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">nGonDiagram</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$diag</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">AddData</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">);</span>
+</span>
+</code>                    </div>
+                </div>
+            </div>
+    </div><div class="card-line">            <div class="card">
+                <div class="card-inner">
+                    <div class="img_container">
+                        <img src="./diags/diag_6.png" class="diag" />
+                    </div>
+                                        <div>
+                        <code><span style="color: #000000">
+<span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'graduations'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'border-color'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#222222'</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'inner-bgcolor'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#cccccc'</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'graduation-bgcolors'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'#444444'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'#777777'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'#999999'<br />&nbsp;&nbsp;</span><span style="color: #007700">),<br />);<br /></span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'A'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'B'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'C'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'D'</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'E'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'F'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'G'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'H'</span><span style="color: #007700">,<br />);<br /></span><span style="color: #0000BB">$diag&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">nGonDiagram</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$diag</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">AddData</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">);</span>
+</span>
+</code>                    </div>
+                </div>
+            </div>
+                <div class="card">
+                <div class="card-inner">
+                    <div class="img_container">
+                        <img src="./diags/diag_7.png" class="diag" />
+                    </div>
+                                        <div>
+                        <code><span style="color: #000000">
+<span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'graduations'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'border-color'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#222222'</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'inner-bgcolor'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#cccccc'</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'graduation-bgcolors'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'#444444'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'#777777'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'#999999'<br />&nbsp;&nbsp;</span><span style="color: #007700">),<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'graph-color'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#222222'</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'border-width'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'with-rays'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,<br />);<br /></span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'A'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'B'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'C'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'D'</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'E'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'F'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'G'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'H'</span><span style="color: #007700">,<br />);<br /></span><span style="color: #0000BB">$diag&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">nGonDiagram</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$diag</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">AddData</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">);</span>
+</span>
+</code>                    </div>
+                </div>
+            </div>
+                <div class="card">
+                <div class="card-inner">
+                    <div class="img_container">
+                        <img src="./diags/diag_8.png" class="diag" />
+                    </div>
+                                        <div style="font-size: 24px; padding: 6px 0px 0px; text-align: left;">
+                        Default Values:
+                    </div>
+                                        <div>
+                        <code><span style="color: #000000">
+<span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'width'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">768</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'height'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">640</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'radius'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">200</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'internal-scale'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'output-scale'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'center-x'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'center-y'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'rotation'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'first-vertex'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'anti-aliasing'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'bgcolor'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#eeeeeeff'</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'inner-bgcolor'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'border-color'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#337799'</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'border-width'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'graduations'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'graduation-width'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'graduation-color'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'graduation-bgcolors'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'with-rays'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'rays-width'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'rays-color'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'centering'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'cache-grid'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'graph-color'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#772222'</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'graph-width'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'caption-font-size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">16</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'caption-color'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#222222'</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'caption-margin'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'font-location'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'caption-line-margin'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,<br />);<br /></span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6.5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">7.5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9<br /></span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #DD0000">"A"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"B"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"C"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"D"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"E"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"F"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"G"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"H"</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #DD0000">"I"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"J"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"K"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"L"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"M"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"N"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"O"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"P"<br /></span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$diag&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">nGonDiagram</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$diag</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">AddData</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$captions&nbsp;</span><span style="color: #007700">);</span>
+</span>
+</code>                    </div>
+                </div>
+            </div>
+    </div>    </form>
+    </div>
+    <div id="footer">
+        nGonDiagram/Examples
+    </div>
+</body>
+</html>

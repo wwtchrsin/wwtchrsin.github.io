@@ -2,11 +2,9 @@
 page: home
 ---
 <h1>Repos:</h1>
-<ul>
-	<li><a href="https://bvadncvab-h.github.io/Bitfields.js/">Bitfields.js</a></li>
-	<li><a href="https://bvadncvab-h.github.io/BitSequenceCore/">BitSequenceCore</a></li>
-	<li><a href="https://bvadncvab-h.github.io/nGonDiagram/">nGonDiagram</a></li>
-</ul>
+{% for repo in site.github.public_repositories %}
+    * [{{ repo.name }}]({{ repo.html_url }})
+{% endfor %}
 <h1>Sandbox:</h1>
 <ul>
 	<li><a href="weather-forecast/weather_cost.html">Weather Cost</a></li>

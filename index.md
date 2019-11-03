@@ -3,7 +3,7 @@ page: home
 ---
 <h1>Repos:</h1>
 {% for repo in site.github.public_repositories %}
-    * [{{ repo.name }}]({{ repo.html_url }})
+  * [{{ repo.name }}]({{ repo.html_url }})
 {% endfor %}
 <h1>Sandbox:</h1>
 <ul>

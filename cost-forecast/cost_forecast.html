@@ -1,7 +1,8 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Стоимость Погоды</title>
+<title>Cost Forecast: Расчет стоимости поддержания температуры в помещении</title>
 <style type="text/css" media="all">
 	body {
 		background-color: #fefefe;
@@ -279,6 +280,7 @@
 		return Math.round( number * Math.pow(10, precision) ) / Math.pow(10, precision);
 	}
 	function getPowerByTemp( t0, col ) {
+		if ( t0 >= par[col].t1 && t0 <= par[col].t1u ) return 0;
 		var base_power = (par[col].base / (720 * par[col].cost))*(1-par[col].ex/100);
 		var power;
 		var t1 = ( par[col].t1 >= t0 ) ? par[col].t1 : par[col].t1u; 
@@ -302,10 +304,8 @@
 		return (cost > par[col].base) ? cost : par[col].base;
 	}
 	function getCostByTemp( t0, col, timeSpan ) {
-		if ( timeSpan === undefined ) timeSpan = 720;
 		var power = getPowerByTemp( t0, col );
-		var cost = power * par[col].cost * timeSpan + par[col].base;
-		return (cost > par[col].base) ? cost : par[col].base;
+		return getCostByPower( power, col, timeSpan );
 	}
 	function getTempStr( temp ) {
 		var sign = ( +temp > 0 ) ? '+' : '';
@@ -552,6 +552,17 @@
 			tempcostElems[i].cost_month.textContent = outputStr.cost_month + ' ' + labels.rub[lang];
 			tempcostElems[i].power.textContent = outputStr.power + ' ' + labels.kilo[lang] + labels.watt[lang];
 		}
+		for ( var i=0; i < 2; i++ ) {
+			if ( !par[i].enabled ) {
+				window.tempIndicators['t'+(i+1)+'Wrapper'].style.visibility = 'hidden';
+				window.tempIndicators['t'+(i+1)+'Lower'].textContent = '';
+				window.tempIndicators['t'+(i+1)+'Upper'].textContent = '';
+			} else {
+				window.tempIndicators['t'+(i+1)+'Wrapper'].style.visibility = 'visible';
+				window.tempIndicators['t'+(i+1)+'Lower'].textContent = '' + par[i].t1 + labels.celsius[lang];
+				window.tempIndicators['t'+(i+1)+'Upper'].textContent = '' + par[i].t1u + labels.celsius[lang];
+			}
+		}
 	}
 	function printOutForecast() {
 		function printOutHeader( temp ) {
@@ -573,7 +584,6 @@
 			var temp = wd.data[i].temp;
 			var sign = ( temp > 0 ) ? '+' : '';
 			var tempStr = getTempStr( temp );
-			var outputStr = getOutputString( temp );
 			if ( rnd_temp != prev_rnd_temp ) {
 				var headerData = ( prev_rnd_temp > -274 ) ? [ temp, rnd_temp ] : [ rnd_temp ]; 
 				for ( var j=0; j<headerData.length; j++ ) {
@@ -589,9 +599,7 @@
 			tempcostElems[i].temp.className = 'tempcost_temp';
 			tempcostElems[i].temp.textContent = tempStr;
 			tempcostElems[i].cost_month.className = 'tempcost_cost';
-			tempcostElems[i].cost_month.textContent = outputStr.cost_month + ' ' + labels.rub[lang];
 			tempcostElems[i].power.className = 'tempcost_power';
-			tempcostElems[i].power.textContent = outputStr.power + ' ' + labels.kilo[lang] + labels.watt[lang];
 			tempcostElems[i].cell.className = 'tempcost_cell';
 			tempcostElems[i].cell.appendChild( tempcostElems[i].temp );
 			tempcostElems[i].cell.appendChild( tempcostElems[i].cost_month );
@@ -599,6 +607,7 @@
 			tempcostWrapElem.appendChild( tempcostElems[i].cell );
 		}
 		printOutHeader( wd.data[ wd.data.length - 1 ].temp + 1 );
+		refreshForecast();
 		mainPartElem.appendChild( tempcostWrapElem );
 	}
 	window.onload = function() {
@@ -635,7 +644,19 @@
 			var sign = ( rnd_temp > 0 ) ? '+' : '';
 			wd.data[i].rnd_temp = rnd_temp;
 		}
-		
+		var tempIndicatorsSelectors = {
+			t1Wrapper: '.t1_indicator',
+			t1Lower: '.t1_indicator .t_lower',
+			t1Upper: '.t1_indicator .t_upper',
+			t2Wrapper: '.t2_indicator',
+			t2Lower: '.t2_indicator .t_lower',
+			t2Upper: '.t2_indicator .t_upper',
+		};
+		window.tempIndicators = {};
+		for ( var i in tempIndicatorsSelectors ) { 
+			window.tempIndicators[i] = document.querySelector(tempIndicatorsSelectors[i]);
+			if ( !window.tempIndicators[i] ) throw new Error('error!');
+		}
 		printOutForecast();
 	};
 </script>
@@ -643,12 +664,27 @@
 <body>
 <div id="page_content">
 	<div id="header">
-		Стоимость Погоды
+		<div>
+			Cтоимость поддержания температуры 
+		</div>
+		<div>
+			<span class="t1_indicator">
+				<span class="t_lower"></span>
+				<span> ... </span>
+				<span class="t_upper"></span>
+			</span>
+			<span class="t2_indicator">
+				<span> / </span>
+				<span class="t_lower"></span>
+				<span> ... </span>
+				<span class="t_upper"></span>
+			</span>
+		</div>
 	</div>
 	<div id="main_part">
 	</div>
 	<div id="footer">
-		Стоимость Погоды
+		Cost Forecast
 	</div>
 <div>
 </div>

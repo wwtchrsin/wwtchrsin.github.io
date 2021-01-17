@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Conversation Simulator 4</title>
+<link rel="stylesheet" type="text/css" href="./css/main.css" media="all">
+<style type="text/css"></style>
+</head>
+<body><!--
+    --><div id="page"><!--
+    --><header><!--
+    --></header><!--
+    --><main><!--
+        --><canvas id="touchy-person"></canvas><!--
+    --></main><!--
+    --><footer><!--
+    --></footer><!--
+    --></div><!--
+    --><script type="text/javascript" src="./js/canvas-adjuster.js"></script><!--
+    --><script type="text/javascript" src="./js/canvas-refresher.js"></script><!--
+    --><script type="text/javascript" src="./js/speech-balloon.js"></script><!--
+    --><script type="text/javascript" src="./js/touchy-person.js"></script><!--
+    --><script type="text/javascript" src="./js/conversation-room.js"></script><!--
+    --><script type="text/javascript" src="./js/conversation.js"></script><!--
+    --><script type="text/javascript">
+        window.addEventListener("DOMContentLoaded", function(ev) {
+            window.conversation = new Conversation("#touchy-person");
+        });
+    </script><!--
+--></body>
+</html>

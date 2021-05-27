@@ -6,6 +6,7 @@ var CanvasAdjuster = function(canvas, rescoef) {
         canvas.style.height = "100%";
         window.addEventListener("resize", refresh);
     } else canvas = null;
+    var listeners = { "onresize": [] };
     var dimensions = null;
     var REFRESH_INTERVAL = 225;
     var REFRESH_MIN_INTERVAL = 125;
@@ -36,6 +37,9 @@ var CanvasAdjuster = function(canvas, rescoef) {
             dimensions.bottom = newDims.bottom;
             dimensions.width = newWidth;
             dimensions.height = newHeight;
+            for ( var i=0; i < listeners.onresize.length; i++ ) {
+                listeners.onresize[i](newWidth, newHeight);
+            }
         }
         lastRefresh = timestamp;
     };
@@ -63,7 +67,24 @@ var CanvasAdjuster = function(canvas, rescoef) {
         }
         rescoef = value;
     };
+    this.getRefreshInterval = function() { return REFRESH_INTERVAL; };
     this.getResCoef = function() { return rescoef; };
     this.getCanvas = function() { return canvas; };
     this.getBoundingRect = function() { return dimensions; };
+    this.addEventListener = function(evName, listener) {
+        if ( typeof evName !== "string" ) return;
+        if ( typeof listener !== "function" ) return;
+        evName = "on" + evName.toLowerCase();
+        if ( !(evName in listeners) ) return;
+        if ( listeners[evName].indexOf(listener) > -1 ) return;
+        listeners[evName].push(listener);
+    };
+    this.removeEventListener = function(evName, listener) {
+        if ( typeof evName !== "string" ) return;
+        if ( typeof listener !== "function" ) return;
+        evName = "on" + evName.toLowerCase();
+        if ( !(evName in listeners) ) return;
+        var index = listeners[evName].indexOf(listener);
+        if ( index >= 0 ) listeners[evName].splice(index, 1);
+    };
 };

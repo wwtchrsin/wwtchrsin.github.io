@@ -1,10 +1,32 @@
 var ConversationRoom = function() {
     var values = { corner_x: 0.3, corner_y: 0.6 };
-    var animation = {
+    var listeners = {
+        "onanimationstart": [],
+        "onanimationend": [],
+        "onanimationframe": [],
+    };
+    var reportEvent = {
+        "animationstart": function() {
+            for ( var i=0; i < listeners.onanimationstart.length; i++ ) {
+                listeners.onanimationstart[i]();
+            }
+        },
+        "animationend": function() {
+            for ( var i=0; i < listeners.onanimationend.length; i++ ) {
+                listeners.onanimationend[i]();
+            }
+        },
+        "animationframe": function() {
+            for ( var i=0; i < listeners.onanimationframe.length; i++ ) {
+                listeners.onanimationframe[i]();
+            }
+        },
+    };
+    var animation = { 
         corner_x: {start: 0, end: 0, duration: 1500, enabled: false},
         corner_y: {start: 0, end: 0, duration: 1500, enabled: false},
     };
-    var styles = {
+    var styles = { 
         "left-wall-bg": "rgba(0,0,0,0.3)",
         "right-wall-bg": "rgba(0,0,0,0.2)",
         "floor-bg": "rgba(0,0,0,0.1)",
@@ -34,9 +56,11 @@ var ConversationRoom = function() {
         if ( animatedValuesCounter > 0 ) {
             animationLastRefresh = timestamp;
             animationIID = requestAnimationFrame(animate);
+            reportEvent["animationframe"]();
         } else {
             animationLastRefresh = null;
             animationIID = null;
+            reportEvent["animationend"]();
         }
     };
     this.refresh = function(canvas) {
@@ -81,7 +105,10 @@ var ConversationRoom = function() {
         animation.corner_y.duration = duration;
         animation.corner_x.enabled = true;
         animation.corner_y.enabled = true;
-        if ( !animationIID ) animationIID = requestAnimationFrame(animate);
+        if ( !animationIID ) {
+            animationIID = requestAnimationFrame(animate);
+            reportEvent["animationstart"]();
+        }
     };
     this.setStyles = function(_styles) {
         for ( var name in _styles ) {
@@ -92,5 +119,21 @@ var ConversationRoom = function() {
     this.setStyle = function(name, color) {
         if ( !(name in styles) ) return;
         styles[name] = color;
+    };
+    this.addEventListener = function(evName, listener) {
+        if ( typeof evName !== "string" ) return;
+        if ( typeof listener !== "function" ) return;
+        evName = "on" + evName.toLowerCase();
+        if ( !(evName in listeners) ) return;
+        if ( listeners[evName].indexOf(listener) > -1 ) return;
+        listeners[evName].push(listener);
+    };
+    this.removeEventListener = function(evName, listener) {
+        if ( typeof evName !== "string" ) return;
+        if ( typeof listener !== "function" ) return;
+        evName = "on" + evName.toLowerCase();
+        if ( !(evName in listeners) ) return;
+        var index = listeners[evName].indexOf(listener);
+        if ( index >= 0 ) listeners[evName].splice(index, 1);
     };
 };

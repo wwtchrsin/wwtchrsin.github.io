@@ -1,10 +1,9 @@
-var CanvasRefresher = function() {
+var CanvasRefresher = function(canvas, mode) {
     var self = this;
-    var canvas = null;
     var layers = [];
     var objectsByLayer = {};
     var refreshIID = null;
-    var refresh = function() {
+    var refresh = function(t, invocation) {
         if ( !canvas ) return;
         var context = canvas.getContext("2d");
         context.clearRect(0, 0, canvas.width, canvas.height);
@@ -15,20 +14,37 @@ var CanvasRefresher = function() {
                 objectsByLayer[layer][j].refresh(canvas);
             }
         }
-        if ( refreshIID ) refreshIID = requestAnimationFrame(refresh);
+        if ( invocation !== "manual" && refreshIID !== null )
+            cancelAnimationFrame(refreshIID);
+        if ( invocation !== "manual" && mode !== "manual" )
+            refreshIID = requestAnimationFrame(refresh);
     };
     this.connect = function(_canvas) {
         if ( canvas ) this.disconn();
         if ( typeof _canvas === "string" ) _canvas = document.querySelector(_canvas);
         if ( !(_canvas instanceof HTMLElement) ) return;
         canvas = _canvas;
-        refreshIID = requestAnimationFrame(refresh);
+        if ( refreshIID !== null ) cancelAnimationFrame(refreshIID);
+        if ( mode === "manual" ) refreshIID = null;
+        else refreshIID = requestAnimationFrame(refresh);
     };
     this.disconn = function() {
         if ( refreshIID ) cancelAnimationFrame(refreshIID);
         refreshIID = null;
         canvas = null;
     };
+    this.refresh = refresh.bind(null, 0, "manual");
+    this.setRefreshMode = function(value) {
+        if ( value === "manual" && refreshIID !== null ) {
+            cancelAnimationFrame(refreshIID);
+            refreshIID = null;
+        }
+        if ( value !== "manual" && refreshIID === null ) {
+            refreshIID = requestAnimationFrame(refresh);
+        }
+        mode = value;
+    };
+    this.getRefreshMode = function(value) { return mode; };
     this.insertObject = function(layer, object) {
         layer = +layer;
         if ( !(layer in objectsByLayer) ) {
@@ -59,5 +75,5 @@ var CanvasRefresher = function() {
         }
     };
     this.getCanvas = function() { return canvas; };
-    if ( arguments.length > 0 ) this.connect(arguments[0]); 
+    if ( canvas ) this.connect(canvas);
 };

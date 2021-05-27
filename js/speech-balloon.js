@@ -7,22 +7,22 @@ var SpeechBalloon = function() {
         "font-size": 0.03, 
         "border-width": 0.004,
         "border-color": "#222222",
-        "font-color": "#222222",
-        "background": "#cccccc"
+        "font-color": "#222222", 
+        "background": "#cccccc" 
     };
     var pointerPosition = 0;
     var pointerSide = {
-        "0": 0, "1": 0, "2": 1, "3": 1,
+        "0": 0, "1": 0, "2": 1, "3": 1, 
         "4": 1, "5": 2, "6": 2, "7": 2,
         "8": 3, "9": 3, "10": 3, "11": 0,
     };
     var pointerDirection = {
-        "0": 1, "1": 2, "2": 0, "3": 1,
+        "0": 1, "1": 2, "2": 0, "3": 1, 
         "4": 2, "5": 0, "6": 1, "7": 2,
         "8": 0, "9": 1, "10": 2, "11": 0,
     };
-    var boundingRect = {
-        left: 0, right: 0,
+    var boundingRect = { 
+        left: 0, right: 0, 
         top: 0, bottom: 0,
         width: 0, height: 0,
     };

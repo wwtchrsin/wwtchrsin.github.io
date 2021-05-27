@@ -11,7 +11,9 @@
     --><header><!--
     --></header><!--
     --><main><!--
-        --><canvas id="touchy-person"></canvas><!--
+        --><canvas id="bg-canvas"></canvas><!--
+        --><canvas id="main-canvas"></canvas><!--
+        --><canvas id="text-canvas"></canvas><!--
     --></main><!--
     --><footer><!--
     --></footer><!--
@@ -24,7 +26,11 @@
     --><script type="text/javascript" src="./js/conversation.js"></script><!--
     --><script type="text/javascript">
         window.addEventListener("DOMContentLoaded", function(ev) {
-            window.conversation = new Conversation("#touchy-person");
+            window.conversation = new Conversation({
+                bg: "#bg-canvas",
+                main: "#main-canvas",
+                text: "#text-canvas",
+            });
         });
     </script><!--
 --></body>

@@ -162,7 +162,7 @@ var Conversation = function(canvases) {
         "1B": {
             sentence: "Hello, how are you?",
             negative: {
-                sentence: "Seems much better than you",
+                sentence: "Better than you",
                 depression_delta: 0.45,
                 agression_delta: 0.5,
                 anxiety_delta: -0.5,
